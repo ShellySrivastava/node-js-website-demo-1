@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use('/products', product);
 
 let port = 8080;
