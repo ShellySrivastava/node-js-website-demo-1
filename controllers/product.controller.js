@@ -17,7 +17,16 @@ let product_create = (req, res) => {
     });
 }
 
+let product_details = (req, res) => {
+    Product.findOne({id: req.body.id}).then((product) => {
+        res.send(product);
+    }).catch((err) => {
+        res.send('Unable to fetch the product');
+    })
+}
+
 module.exports = {
     test,
-    product_create
+    product_create,
+    product_details
 }
