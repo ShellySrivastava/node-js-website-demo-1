@@ -37,7 +37,7 @@ let product_update = (req, res) => {
     }, {
         returnOriginal: false
     }).then((result) => {
-        res.send(result);
+        res.send('Product Updated successfully');
     }).catch((err) => {
         res.send('Unable to update the product');
     });
