@@ -43,9 +43,18 @@ let product_update = (req, res) => {
     });
 }
 
+let product_delete = (req, res) => {
+    Product.findOneAndRemove({id: req.body.id}).then((result) => {
+        res.send('Product deleted successfully');
+    }).catch((err) => {
+        res.send('Unable to delete the product');
+    });
+}
+
 module.exports = {
     test,
     product_create,
     product_details, 
-    product_update
+    product_update,
+    product_delete
 }
