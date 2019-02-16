@@ -25,8 +25,27 @@ let product_details = (req, res) => {
     })
 }
 
+let product_update = (req, res) => {
+    Product.findOneAndUpdate({id: req.body.id}, {
+        $set: {
+            name: req.body.name,
+            price: req.body.price
+        },
+        $inc: {
+            __v: 1
+        }
+    }, {
+        returnOriginal: false
+    }).then((result) => {
+        res.send(result);
+    }).catch((err) => {
+        res.send('Unable to update the product');
+    });
+}
+
 module.exports = {
     test,
     product_create,
-    product_details
+    product_details, 
+    product_update
 }
