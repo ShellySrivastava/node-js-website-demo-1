@@ -6,9 +6,10 @@ let test = (req, res) => {
 
 let product_create = (req, res) => {
     let product = new Product({
-            name: req.body.name,
-            price: req.body.price
-        });
+        id: req.body.id,
+        name: req.body.name,
+        price: req.body.price
+    });
     product.save().then((doc) => {
         res.send('Product created succesfully');
     }).catch((err) => {
