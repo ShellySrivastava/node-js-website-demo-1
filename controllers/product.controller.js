@@ -6,7 +6,7 @@ let test = (req, res) => {
 
 let product_create = (req, res) => {
     let product = new Product({
-        id: req.body.id,
+        _id: req.body.id,
         name: req.body.name,
         price: req.body.price
     });
@@ -18,7 +18,7 @@ let product_create = (req, res) => {
 }
 
 let product_details = (req, res) => {
-    Product.findOne({id: req.body.id}).then((product) => {
+    Product.findOne({_id: req.params.id}).then((product) => {
         res.send(product);
     }).catch((err) => {
         res.send('Unable to fetch the product');
@@ -26,7 +26,7 @@ let product_details = (req, res) => {
 }
 
 let product_update = (req, res) => {
-    Product.findOneAndUpdate({id: req.body.id}, {
+    Product.findOneAndUpdate({_id: req.params.id}, {
         $set: {
             name: req.body.name,
             price: req.body.price
@@ -44,7 +44,7 @@ let product_update = (req, res) => {
 }
 
 let product_delete = (req, res) => {
-    Product.findOneAndRemove({id: req.body.id}).then((result) => {
+    Product.findOneAndRemove({_id: req.params.id}).then((result) => {
         res.send('Product deleted successfully');
     }).catch((err) => {
         res.send('Unable to delete the product');
