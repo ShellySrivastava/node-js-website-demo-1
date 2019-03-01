@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/products', product);
 
-let port = 8080;
+// let port = 8080;
+let port = process.env.PORT || 8080
 app.listen(port, () => {
     console.log(`server listening at port ${port}`);
 });
